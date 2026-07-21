@@ -36,7 +36,7 @@ function konfirmasiWA(status) {
     const nomorRT = "62895345775885"; // <-- GANTI INI KE NOMOR WA KAMU
     
     // Pesan otomatis yg masuk ke WA kamu
-    const pesan = `UNDANGAN RAPAT RT 05
+    const pesan = `UNDANGAN RAPAT RT 04
 
 Nama: [MOHON ISI NAMA ANDA]
 Status: ${status}
