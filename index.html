@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDANGAN RAPAT PREMIUM 🇮🇩</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="loader">
+        <div class="loader-logo">🇮🇩</div>
+        <div class="loader-text">MEMUAT UNDANGAN...</div>
+    </div>
+
+    <div class="flag-line flag-top"></div>
+    <div class="bg-layer bg-gradient"></div>
+    <div class="particles-3d" id="particles"></div>
+
+    <div class="container">
+        <div class="card-premium">
+            
+            <div class="header-badge">UNDANGAN RESMI RT 04</div>
+            
+            <div class="logo-premium">🇮🇩</div>
+            <h1>RAPAT WARGA</h1>
+            <p class="subtitle-premium">Menyongsong Kemerdekaan Indonesia Ke-81</p>
+            <div class="merdeka-tag">🔥 GOTONG ROYONG MENUJU INDONESIA MAJU 🔥</div>
+
+            <div class="info-grid-premium">
+                <div class="info-card">
+                    <span class="info-icon">📅</span>
+                    <h4>Hari & Tanggal</h4>
+                    <p>Jumat, 24 Oktober 2026</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">⏰</span>
+                    <h4>Waktu Pelaksanaan</h4>
+                    <p>19.30 WIB - Selesai</p>
+                </div>
+                <!-- INI UDAH JADI LINK MAPS -->
+                <a href="https://www.google.com/maps/place/6%C2%B022'57.8%22S+106%C2%B047'53.5%22E/@-6.3827266,106.7975369,19z/data=!3m1!4b1!4m4!3m3!8m2!3d-6.3827266!4d106.7981806?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="info-card-link">
+                    <div class="info-card">
+                        <span class="info-icon">📍</span>
+                        <h4>Lokasi Rapat</h4>
+                        <p>Klik untuk buka Maps 🚗</p>
+                    </div>
+                </a>
+            </div>
+
+            <h3 class="section-title">AGENDA RAPAT</h3>
+            <div class="agenda-wrapper">
+                <div class="agenda-item-premium"><div class="agenda-number">1</div>Pembentukan Panitia HUT RI Ke-81</div>
+                <div class="agenda-item-premium"><div class="agenda-number">2</div>Perencanaan Lomba & Hiburan</div>
+                <div class="agenda-item-premium"><div class="agenda-number">3</div>Penggalangan Dana & Iuran</div>
+                <div class="agenda-item-premium"><div class="agenda-number">4</div>Konsep Dekorasi Lapangan</div>
+                <div class="agenda-item-premium"><div class="agenda-number">5</div>Penutup & Doa Bersama</div>
+            </div>
+
+            <div class="countdown-premium">
+                <div class="countdown-label">⏳ WAKTU MENUJU RAPAT</div>
+                <div class="countdown-value" id="timer">Memuat...</div>
+            </div>
+
+            <div class="form-konfirmasi">
+                <input type="text" id="nama" placeholder="Masukkan Nama Lengkap Anda" required>
+            </div>
+
+            <div class="button-wrapper">
+                <button class="btn-premium btn-merah-premium" onclick="konfirmasiWA('HADIR')">✅ KONFIRMASI HADIR</button>
+                <button class="btn-premium btn-putih-premium" onclick="konfirmasiWA('TIDAK HADIR')">❌ TIDAK HADIR</button>
+            </div>
+
+            <div id="konfirmasi"></div>
+
+            <div class="credit-premium">editor by muhammad ardiyansyah</div>
+
+        </div>
+    </div>
+
+    <div class="flag-line flag-bottom"></div>
+    <div id="petasan-container"></div>
+
+    <script>
+        const nomorRT = "6289521650546"; 
+
+        // FUNGSI PETASAN BARU
+        function boomPetasan() {
+            const container = document.getElementById('petasan-container');
+            for(let i = 0; i < 30; i++) {
+                const petasan = document.createElement('div');
+                petasan.className = 'petasan';
+                petasan.innerHTML = ['🎆','🎇','✨','🔴'][Math.floor(Math.random()*4)];
+                petasan.style.left = '50%';
+                petasan.style.top = '50%';
+                petasan.style.setProperty('--x', (Math.random() - 0.5) * 600 + 'px');
+                petasan.style.setProperty('--y', (Math.random() - 0.5) * 600 + 'px');
+                container.appendChild(petasan);
+                setTimeout(() => petasan.remove(), 1500);
+            }
+        }
+
+        function konfirmasiWA(status) {
+            const nama = document.getElementById('nama').value;
+            if(nama === "") {
+                alert("Isi nama dulu dong kak 🙏");
+                return;
+            }
+
+            if(status === 'HADIR') {
+                boomPetasan(); // BOOM KALAU HADIR
+            }
+
+            const pesan = `*UNDANGAN RAPAT PANITIA RT 04*
+
+Nama: *${nama}*
+Status: *${status}*
+Tanggal: Jumat, 24 Oktober 2026
+
+Terima kasih.`;
+
+            const url = `https://api.whatsapp.com/send?phone=${nomorRT}&text=${encodeURIComponent(pesan)}`;
+            setTimeout(() => { window.location.href = url; }, 500); // Kasih jeda 0.5 detik biar petasan keluar dulu
+
+            const el = document.getElementById('konfirmasi');
+            el.style.display = 'block';
+            if(status === 'HADIR') {
+                el.style.color = '#D90429';
+                el.innerHTML = `MERDEKA! Mengarahkan ke WhatsApp... 🇮🇩🔥`;
+            } else {
+                el.style.color = '#666';
+                el.innerHTML = `Mengarahkan ke WhatsApp... 🙏`;
+            }
+        }
+
+        const p = document.getElementById('particles');
+        for(let i=0; i<25; i++) {
+            const el = document.createElement('div');
+            el.className = 'particle-3d';
+            el.innerHTML = ['🇮🇩','⭐','🎉','🔥'][Math.floor(Math.random()*4)];
+            el.style.left = Math.random()*100 + '%';
+            el.style.animationDuration = 10 + Math.random()*10 + 's';
+            el.style.animationDelay = Math.random()*5 + 's';
+            p.appendChild(el);
+        }
+
+        const target = new Date("Oct 24, 2026 19:30:00").getTime();
+        setInterval(() => {
+            const d = target - new Date().getTime();
+            const days = Math.floor(d / 86400000);
+            const hours = Math.floor((d % 86400000) / 3600000);
+            document.getElementById("timer").innerHTML = 3 + " Hari ";
+        }, 1000);
+    </script>
+
+</body>
+</html> 
