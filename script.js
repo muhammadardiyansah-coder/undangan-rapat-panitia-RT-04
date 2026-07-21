@@ -15,7 +15,7 @@ function tidakHadir() {
 }
 
 // 3. COUNTDOWN OTOMATIS KE TANGGAL RAPAT
-const tanggalRapat = new Date("Oct 20, 2026 13:00:00").getTime();
+const tanggalRapat = new Date("Oct 24, 2026 13:00:00").getTime();
 const x = setInterval(function() {
     const now = new Date().getTime();
     const jarak = tanggalRapat - now;
